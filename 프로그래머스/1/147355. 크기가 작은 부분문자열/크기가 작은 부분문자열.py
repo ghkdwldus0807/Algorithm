@@ -4,11 +4,7 @@ def solution(t, p):
     length = len(p)
     
     for i in range(0,len(t)-length+1):
-        arr.append(t[i:i+length])
-    arr = list(map(int,arr))
-    
-    for i in arr:
-        if i<=int(p) :
-            answer +=1
+        if int(t[i:i+length]) <= int(p) :
+            answer += 1 
 
     return answer
