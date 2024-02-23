@@ -6,9 +6,8 @@ def solution(participant, completion):
     com_dict = Counter(completion)
     ans_dict = part_dict - com_dict
     
-    for i in ans_dict :
-        if ans_dict[i] == 1:
-            answer = i
-            break
+    answer = list(ans_dict.keys())[0]
+    
+  
             
     return answer
