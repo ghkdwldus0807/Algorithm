@@ -1,11 +1,6 @@
 class Solution {
     public int solution(String str1, String str2) {
-        int answer = str1.indexOf(str2);
-        
-        if(answer>=0){
-            answer = 1;
-        }else 
-            answer = 2;
-        return answer;
+        int answer = 0;
+        return (str1.contains(str2)?1:2);
     }
 }
