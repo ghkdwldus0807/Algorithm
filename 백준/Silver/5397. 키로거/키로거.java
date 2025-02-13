@@ -50,7 +50,7 @@ public class Main {
 				sb.append(str);
 			}
 			
-			System.out.println(sb);
+			System.out.println(sb.toString());
 			
 		}
 		
