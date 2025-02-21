@@ -33,7 +33,8 @@ public class Main {
 	static int n,m;
 	static int [] parent;//사이클 확인용 배열 
 	static List<Road> list = new ArrayList<>();
-	static List<Integer> costs = new ArrayList<>();
+	static int ans = 0;
+	static int bigCost = 0;
 
 	public static void main(String[] args) throws IOException{
 
@@ -74,20 +75,15 @@ public class Main {
 				continue;
 			else {
 				union(house1,house2);
-				costs.add(cost);
+				ans += cost;
+				bigCost = cost;
 			}
 		}
 		
 		
 		//두 마을로 분리하기 위해 연결된 길 중 제일 비용이 큰 값 빼기
-		costs.remove(costs.size()-1);
 		
-		int sum = 0;
-		for(int num:costs) {
-			sum+=num;
-		}
-		
-		System.out.println(sum);
+		System.out.println(ans-bigCost);
 
 		
 	}//main 
