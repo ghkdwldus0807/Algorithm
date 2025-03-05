@@ -1,5 +1,4 @@
 
-
 import java.util.*;
 import java.io.*;
 import java.math.*;
@@ -9,16 +8,13 @@ public class Solution {
 	/*
 	 * 1. K와 마름모 중심(x,y)를 가지고 마름모 영역 계산하는 메서드
 	 * 1. 운영 비용 계산하는 메서드 
-	 * 2. 집 개수 및 좌표를 저장하는 메서드 or 입력받으면서 저장해도 될 듯 
 	 * 
-	 * 2. 집을 마름모 중심으로 가지고 K를 1부터 늘림, 운영 비용 (k*k + k-1*k-1 > 집의 개수 * M) 이면 break 
+	 * 2. 집을 마름모 중심으로 가지고 K를 1부터 늘림, K>N 이면 break 
 	 * 
 	 * */
 	
 	static int T,N,M;
 	static int [][] map;
-	static Queue<int []> houses; //집들의 좌표를 저장하는 큐 (y,x)
-	static Queue<int []> diamond; //마름모 영역 
 	static int [] dx = {0,0,-1,1};
 	static int [] dy = {-1,1,0,0};
 	
@@ -33,10 +29,7 @@ public class Solution {
 			N = Integer.parseInt(st.nextToken());
 			M = Integer.parseInt(st.nextToken());
 			map = new int[N][N];
-			houses = new ArrayDeque<>();
-			diamond = new ArrayDeque<>();
 			int max = Integer.MIN_VALUE;
-			int houseNum = 0; //집 개수 저장 
 			
 			for(int i=0; i<N; i++) {
 				st = new StringTokenizer(br.readLine());
@@ -44,37 +37,9 @@ public class Solution {
 				for(int j=0; j<N; j++) {
 					int n = Integer.parseInt(st.nextToken());
 					map[i][j] = n;
-					
-					if(n == 1) {
-						houses.add(new int[] {i,j});
-						houseNum ++;
-					}
-					
 				}
 			}// 입력 
 			
-//			while(!houses.isEmpty()) {
-//				
-//				int [] house = houses.poll();
-//				int y = house[0];
-//				int x = house[1];
-//				int k = 1;
-//				
-//				while(true) {
-//					int result = getServiceArea(k, y, x);
-//					
-//					if(result == -1)
-//						break;
-//					
-////					System.out.println("======== 센터 좌표 " + y + " , " + x );
-////					System.out.println("마름모 크기 : "+ k);
-////					System.out.println("집의 개수 : " + result);
-//					max = Math.max(max, result);
-//					k++;
-//				}
-//				
-//				
-//			}
 			
 			for(int i=0; i<N; i++) {
 				for(int j=0; j<N; j++){
@@ -93,20 +58,12 @@ public class Solution {
 						k++;
 					}
 					
-					
 				}
 			}
 			
-			
 			System.out.printf("#%d %d \n",t,max);
-
-			
-			
-			
 			
 		}//test case 반복 
-		
-		
 		
 	}//main 
 	
@@ -127,7 +84,6 @@ public class Solution {
 		
 	}
 
-	
 	
 	
 	//마름모 영역 구하면서 영역에 해당하는 집의 개수 구하는 메서드 
