@@ -3,9 +3,8 @@ import java.io.*;
 
 public class Main {
 	
-	
 	static int N;
-	static TreeMap<Long, Integer> dict = new TreeMap<>();
+	static HashMap<Long, Integer> dict = new HashMap<>();
 	static long maxNum = -1;
 	static int maxCount = -1;
 
@@ -22,7 +21,7 @@ public class Main {
 		
 		for(Long key : dict.keySet()) {
 			int value = dict.get(key);
-			if(value>maxCount ) {
+			if(value>maxCount || (value==maxCount && key<maxNum)) {
 				maxNum = key;
 				maxCount = value;
 			}
