@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -15,7 +14,7 @@ public class Main {
 	static int N,M; //지하철 수 , 도착지
 	static int[][] dist ; //최소 갱신 테이블 
 	static int[] subwayCompany; //각 지하철 운영 회사
-//	static boolean [] visited; //노드 방문 여부 
+	static boolean [] visited; //노드 방문 여부 
 	static ArrayList<ArrayList<Subway>> graph = new ArrayList<>() ; //ArrayList.get(i) == i번째 지하철 역의 연결된 정보 
 	static final int INF = 1001;
 	
@@ -53,7 +52,7 @@ public class Main {
 		M = Integer.parseInt(st.nextToken());
 		
 		dist = new int[N][2];
-		//visited = new boolean[N];
+		visited = new boolean[N];
 		subwayCompany = new int[N];
 		
 		for(int i=0; i<N; i++) {
@@ -68,8 +67,6 @@ public class Main {
 		for(int i=0; i<N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j=0; j<N; j++) {
-				
-//				if(i==j) continue;
 				
 				int time = Integer.parseInt(st.nextToken());
 				if (time == 0) continue; //연결되지 않은 경우 건너뛰기
@@ -108,8 +105,13 @@ public class Main {
 			
 			Subway current = pq.poll();
 			
-			if(current.transfer != dist[current.nextSub][0] || current.time !=dist[current.nextSub][1])
+			if(visited[current.nextSub])
 				continue;
+			
+//			if(current.transfer != dist[current.nextSub][0] || current.time !=dist[current.nextSub][1])
+//				continue;
+			
+			visited[current.nextSub] = true;
 			
 			for(Subway next : graph.get(current.nextSub)) {
 				int newTransfer = current.transfer+next.transfer;
@@ -128,7 +130,5 @@ public class Main {
 		}
 		
 	}//dij
-	
-	
 
 }
