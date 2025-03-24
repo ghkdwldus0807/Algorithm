@@ -21,11 +21,7 @@ public class Main {
 		
 		System.out.println(dist[end]);
 		
-		
-
 	}//main 
-	
-	
 	
 	//0-1 bfs
 	static void bfs(int start, int end) {
@@ -42,22 +38,21 @@ public class Main {
 			if(current == end)
 				return;
 			
-			//dist 범위 조건을 꼭 넣어줘야함 아니면 범위를 넘어서 -1(음의 인덱스)나 100000을 넘을 수 있음..
-			
 			if(current*2 <= 100000 && dist[current*2] > dist[current]) {
 				dist[current*2] = dist[current];
 				dq.addFirst(current*2);
 			}
 			
-			if(current-1 > -1 && dist[current-1] > dist[current]+1) {
-				dist[current-1] = dist[current] + 1;
-				dq.addLast(current-1);
-				
-			}
-			
 			if(current+1 <= 100000 && dist[current+1] > dist[current]+1) {
 				dist[current+1] = dist[current]+1;
 				dq.addLast(current+1);
+				
+			}
+			
+			
+			if(current-1 > -1 && dist[current-1] > dist[current]+1) {
+				dist[current-1] = dist[current] + 1;
+				dq.addLast(current-1);
 				
 			}
 			
