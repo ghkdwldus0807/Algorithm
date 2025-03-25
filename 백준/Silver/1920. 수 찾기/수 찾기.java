@@ -5,6 +5,7 @@ public class Main {
 	
 	static int N, M;
 	static int[] arr;
+	static StringBuilder sb = new StringBuilder();
 
 	public static void main(String[] args) throws IOException{
 
@@ -29,10 +30,12 @@ public class Main {
 			int target = Integer.parseInt(st.nextToken());
 			
 			if(isExisted(arr, target))
-				System.out.println(1);
+				sb.append(1).append("\n");
 			else
-				System.out.println(0);
+				sb.append(0).append("\n");
 		}
+		
+		System.out.println(sb);
 
 		
 	}//main 
