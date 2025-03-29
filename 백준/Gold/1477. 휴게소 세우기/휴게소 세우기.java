@@ -36,7 +36,7 @@ public class Main {
 		
 		while(left<=right) {
 			
-			int mid = (left+right) / 2;
+			int mid = left + ((right - left) >> 1);
 			
 			if(getCount(mid) > M)
 				left = mid + 1;
