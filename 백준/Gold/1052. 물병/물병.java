@@ -23,8 +23,8 @@ public class Main {
 			}
 			
 			int idx = Integer.numberOfTrailingZeros(N);
-			N += (int)Math.pow(2, idx);
-			count += (int)Math.pow(2, idx);
+			N += 1<<idx;
+			count += 1<<idx;
 			
 		}
 		
