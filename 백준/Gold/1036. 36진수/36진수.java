@@ -4,13 +4,11 @@ import java.util.*;
 
 public class Main {
 	
-	static HashMap<Character,Integer> dict = new HashMap<>();
-	static StringBuilder sb = new StringBuilder(); //앞에 계속 넣기
-	static BigInteger maxSum = new BigInteger("0");
-	static String [] nums;
+	static HashMap<Character,Integer> dict = new HashMap<>(); //'A'-'Z'를 10~35로 매핑하는 HashMap
+	static BigInteger maxSum = new BigInteger("0"); //정답
+	static String [] nums; //index 역순으로 character 저장
 	static ArrayList<ArrayList<Character>> chars = new ArrayList<>(); // 역순으로 알파벳 인덱스 쪼개서 넣기
 	static int N, K, maxLen = -1; 
-	static HashSet<Character> set = new HashSet<>();
 	
 	static class Bit36 implements Comparable<Bit36>{
 		
@@ -53,11 +51,6 @@ public class Main {
 		 * */ 
 		for(String n : nums) {
 			splitStr(n);
-		}
-
-		//우선순위에 따라 Z로 변환 하기 위해 정렬 
-		for(ArrayList<Character> ch : chars) {
-			Collections.sort(ch);
 		}
 		
 		
@@ -162,7 +155,6 @@ public class Main {
 			}
 		}
 		
-		
 		return sum;
 	}
 	
@@ -177,7 +169,6 @@ public class Main {
 		}
 		
 	}
-	
 	
 	//초기 매핑 HashMap 만들기 
 	static void init() {
